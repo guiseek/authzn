@@ -1,9 +1,12 @@
 <p>auth works!</p>
 
+<pre>{{response | json}}</pre>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <input type="text" formControlName="username" />
-  <input type="password" formControlName="password" />
-  <button>
-    Login
-  </button>
+  <label for="username"> Nome de usuário </label>
+  <input type="text" id="username" formControlName="username" />
+
+  <label for="password"> Senha de acesso </label>
+  <input type="password" id="password" formControlName="password" />
+
+  <button>Login</button>
 </form>

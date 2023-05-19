@@ -12,6 +12,8 @@ export class AuthComponent {
     password: new FormControl('0lelplR')
   })
 
+  response: Record<string, string> = {}
+
   onSubmit() {
     const { username, password } = this.form.value
 
@@ -25,6 +27,8 @@ export class AuthComponent {
       }),
     })
       .then((res) => res.json())
-      .then(console.log);
+      .then(response => {
+        this.response = response
+      });
   }
 }
