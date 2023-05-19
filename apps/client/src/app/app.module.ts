@@ -8,7 +8,10 @@ import { appRoutes } from './app.routes';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([{ path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) }], { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(
+      appRoutes,
+      { initialNavigation: 'enabledBlocking' }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],
