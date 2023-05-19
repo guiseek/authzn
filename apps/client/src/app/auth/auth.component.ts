@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'authzn-auth',
@@ -6,13 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent {
+  form = new FormGroup({
+    username: new FormControl('kminchelle'),
+    password: new FormControl('0lelplR')
+  })
+
   onSubmit() {
+    const { username, password } = this.form.value
+
     fetch('https://dummyjson.com/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        username: 'kminchelle',
-        password: '0lelplR',
+        username: username,
+        password: password,
         // expiresInMins: 60, // optional
       }),
     })
