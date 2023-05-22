@@ -1,0 +1,13 @@
+<p>user-feature-auth works!</p>
+
+<pre>{{ authFacade.auth$ | async | json }}</pre>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label for="username"> Nome de usuário </label>
+  <input type="text" id="username" formControlName="username" />
+
+  <label for="password"> Senha de acesso </label>
+  <input type="password" id="password" formControlName="password" />
+
+  <button>Login</button>
+</form>

@@ -1,0 +1,45 @@
+import { Store } from '@authzn/core/data-access';
+import { Observable } from 'rxjs';
+
+interface <%= className %> {}
+abstract class FindAll<%= className %>sUseCase {
+  abstract execute(): Observable<<%= className %>[]>
+}
+abstract class FindOne<%= className %>UseCase {
+  abstract execute(input: string): Observable<<%= className %>>
+}
+
+interface <%= className %>State {
+  <%= propertyName %>: <%= className %> | null;
+  loading: boolean;
+  data: <%= className %>[];
+}
+
+export class <%= className %>Facade extends Store<<%= className %>State> {
+  <%= propertyName %>$ = this.select((state) => state.<%= propertyName %>);
+  loading$ = this.select((state) => state.loading);
+  data$ = this.select((state) => state.data);
+
+  constructor(
+    private readonly findAllUseCase: FindAll<%= className %>sUseCase,
+    private readonly findOneUseCase: FindOne<%= className %>UseCase,
+  ) {
+    super({
+      <%= propertyName %>: null,
+      loading: false,
+      data: [],
+    });
+  }
+
+  findAll() {
+    this.findAllUseCase.execute().subscribe(
+      (data) => this.setState({ data })
+    );
+  }
+
+  findOne<%= className %>(id: string) {
+    this.findOneUseCase.execute(id).subscribe(
+      (<%= propertyName %>) => this.setState({ <%= propertyName %> })
+    );
+  }
+}

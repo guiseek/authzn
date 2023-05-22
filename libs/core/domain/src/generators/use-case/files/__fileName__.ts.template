@@ -1,0 +1,13 @@
+import { UseCase } from '@authzn/core/domain';
+
+interface <%= input.className %> {}
+interface <%= output.className %> {}
+
+export class <%= name.className %>UseCase implements UseCase<<%= input.className %>, <%= output.className %>> {
+  constructor() {}
+
+  execute(<%= input.propertyName %>: <%= input.className %>) {
+    // Implemente seu caso de uso.
+    return of({})
+  }
+}

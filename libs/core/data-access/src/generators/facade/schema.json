@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "Facade",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Qual nome quer dar ao facade?"
+    },
+    "project": {
+      "type": "string",
+      "description": "",
+      "aliases": ["projectName"],
+      "$default": {
+        "index": 1,
+        "$source": "projectName"
+      },
+      "x-prompt": "Em qual projeto deseja coloca-lo?"
+    }
+  },
+  "required": ["name", "project"]
+}

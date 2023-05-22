@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "facade": {
+      "factory": "./src/generators/facade/generator",
+      "schema": "./src/generators/facade/schema.json",
+      "description": "Cria um facade"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "use-case": {
+      "factory": "./src/generators/use-case/generator",
+      "schema": "./src/generators/use-case/schema.json",
+      "description": "Cria um caso de uso"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "UseCase",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Qual nome quer dar ao caso de uso?"
+    },
+    "project": {
+      "type": "string",
+      "description": "",
+      "aliases": ["projectName"],
+      "$default": {
+        "index": 1,
+        "$source": "projectName"
+      },
+      "x-prompt": "Em qual projeto deseja coloca-lo?"
+    },
+    "input": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 2
+      },
+      "x-prompt": "Qual o nome do tipo de entrada?"
+    },
+    "output": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 3
+      },
+      "x-prompt": "Qual o nome do tipo de retorno?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 4
+      },
+      "x-prompt": "Deseja criar um diretório para o caso de uso?"
+    }
+  },
+  "required": ["name", "project", "input", "output"]
+}
