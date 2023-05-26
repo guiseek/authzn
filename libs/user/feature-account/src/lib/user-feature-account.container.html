@@ -1,0 +1,31 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <user-sidenav-menu></user-sidenav-menu>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        mat-icon-button
+        aria-label="Alternar menu de navegação"
+        [ngClass]="{ opened: drawer.opened }"
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Ícone para alternar navegação">
+          menu_open
+        </mat-icon>
+      </button>
+      <h3 class="brand">{{ title }}</h3>
+    </mat-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

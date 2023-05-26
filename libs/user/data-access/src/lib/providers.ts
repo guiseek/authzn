@@ -1,26 +1,31 @@
 import { register } from '@authzn/core/util-common';
+import { Http } from '@authzn/core/data-access';
+import { AuthFacade, AccountFacade } from './application';
+import {
+  AuthHttpRepositoryImpl,
+  UserHttpRepositoryImpl,
+} from './infrastructure';
 import {
   AuthRepository,
+  DeleteAccountUseCase,
+  GetProfileUseCase,
   SignInUseCase,
   SignUpUseCase,
   UserRepository,
 } from '@authzn/user/domain';
-import {
-  AuthStubRepositoryImpl,
-  UserStubRepositoryImpl,
-} from './infrastructure';
-import { AuthFacade } from './application';
 
 export const userProviders = {
   infrastructure() {
     register(
       {
         for: UserRepository,
-        use: UserStubRepositoryImpl,
+        use: UserHttpRepositoryImpl,
+        add: [Http],
       },
       {
         for: AuthRepository,
-        use: AuthStubRepositoryImpl,
+        use: AuthHttpRepositoryImpl,
+        add: [Http],
       }
     );
   },
@@ -29,20 +34,37 @@ export const userProviders = {
       {
         for: SignUpUseCase,
         use: SignUpUseCase,
-        add: [UserRepository],
+        add: [AuthRepository],
       },
       {
         for: SignInUseCase,
         use: SignInUseCase,
         add: [AuthRepository],
+      },
+      {
+        for: GetProfileUseCase,
+        use: GetProfileUseCase,
+        add: [AuthRepository],
+      },
+      {
+        for: DeleteAccountUseCase,
+        use: DeleteAccountUseCase,
+        add: [AuthRepository],
       }
     );
   },
   application() {
-    register({
-      for: AuthFacade,
-      use: AuthFacade,
-      add: [SignInUseCase, SignUpUseCase],
-    });
+    register(
+      {
+        for: AuthFacade,
+        use: AuthFacade,
+        add: [SignInUseCase, SignUpUseCase, GetProfileUseCase],
+      },
+      {
+        for: AccountFacade,
+        use: AccountFacade,
+        add: [GetProfileUseCase, DeleteAccountUseCase],
+      }
+    );
   },
 };

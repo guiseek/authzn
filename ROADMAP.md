@@ -15,33 +15,75 @@ npx nx generate @nx/js:library data-access --unitTestRunner=jest --directory=cor
 ```
 
 ```sh
-npx nx generate @nx/plugin:generator use-case --project=core-domain --description='Cria um caso de uso'
+npx nx generate @nx/plugin:generator use-case --project=core-domain --description='Cria um caso de uso' --no-interactive
 ```
 
 ```sh
-npx nx generate @nx/plugin:generator facade --project=core-data-access --description='Cria um facade'
+npx nx generate @nx/plugin:generator facade --project=core-data-access --description='Cria um facade' --no-interactive
 ```
 
 ```sh
-npx nx generate @nx/angular:library feature-auth --directory=user --lazy --parent=apps/client/src/app/app.routes.ts --routing --prefix=user --style=scss --tags=type:feature,scope:user
+npx nx generate @nx/angular:library feature-auth --directory=user --lazy --parent=apps/client/src/app/app.routes.ts --routing --prefix=user --style=scss --tags=type:feature,scope:user --no-interactive
 ```
 
 ```sh
-npx nx generate @nx/angular:component user-feature-auth --project=user-feature-auth --flat --type=container
+npx nx generate @nx/angular:component user-feature-auth --project=user-feature-auth --flat --type=container --no-interactive
 ```
 
-## Parte 1
-1. Criar implementações concretas para abstrações da camada data-access
-1. Criar mocks e stubs para abstrações e testes unitários da camada data-access
-1. Criar componentes de layout
-1. Criar componentes de páginas
+```sh
+npx nx generate @nx/nest:application server --frontendProject=client --e2eTestRunner=none --strict --no-interactive
+```
 
-## Parte 2
-1. Criar casos de uso usando abstrações na camada domain e configurando injeção de dependência para indicar implementações das abstrações, na camada data-access.
-1. Criar testes unitários para casos de uso na camada domain, configurando injeção de dependência para usar mocks e stubs criados como implementações para abstrações utilizadas.
-1. Criar facades usando casos de uso
-1. Criar dumb components
+```sh
+npx nx generate @nx/nest:resource users --project=server --directory=app --no-interactive
+```
 
-## Parte 3
-1. Criar smart components na camada feature usando facades para execução dos casos de uso e apresentar resultado no template
-1. Criar testes unitários da camada feature
+```sh
+npx nx generate @nx/nest:resource auth --project=server --no-crud --directory=app --no-interactive
+```
+
+```sh
+npm i @nestjs/mapped-types
+```
+
+```sh
+npm install --save @nestjs/jwt
+```
+
+```sh
+npx nx generate @nx/js:library api-interfaces --unitTestRunner=none --directory=user --minimal --tags=type:api,scope:user --no-interactive
+```
+
+```sh
+npm i class-transformer class-validator
+```
+
+```sh
+npx nx generate @nx/angular:library feature-account --directory=user --lazy --parent=apps/client/src/app/app.routes.ts --routing --prefix=user --style=scss --tags=type:feature,scope:user
+```
+
+```sh
+npx nx generate @nx/angular:component components/sign-up --project=user-feature-auth
+```
+
+```sh
+npx nx generate @nx/angular:component containers/profile --project=user-feature-account --type=container
+```
+
+```sh
+npx nx generate @nx/angular:component components/sidenav-menu --project=user-feature-account
+```
+
+```sh
+npx nx generate @nx/angular:component components/password-strength --project=user-feature-account
+```
+
+```sh
+npx nx generate @nx/angular:component containers/security --project=user-feature-account --type=container
+```
+
+```sh
+npx nx generate @nx/angular:library ui-shared --directory=user --prefix=user --style=scss --tags=type:ui,scope:user
+```
+
+

@@ -1,0 +1,15 @@
+<mat-toolbar>
+  <h2>Segurança</h2>
+</mat-toolbar>
+
+<section>
+  <mat-card>
+    <form [formGroup]="form">
+      <mat-card-content>
+        <user-password-strength
+          formControlName="newPassword"
+        ></user-password-strength>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</section>

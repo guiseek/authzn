@@ -1,0 +1,34 @@
+<mat-toolbar>
+  <h2>Perfil</h2>
+</mat-toolbar>
+
+<mat-card>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label> ID </mat-label>
+      <input matInput formControlName="id" readonly />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label> Primeiro nome </mat-label>
+      <input matInput [autofocus]="true" formControlName="firstName" />
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label> Último nome </mat-label>
+      <input matInput type="text" formControlName="lastName" />
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label> Nome de usuário </mat-label>
+      <input matInput type="text" formControlName="username" />
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+
+    <footer>
+      <button mat-button>Register</button>
+    </footer>
+  </form>
+</mat-card>

@@ -18,9 +18,14 @@
       "@authzn/core/data-access": ["libs/core/data-access/src/index.ts"],
       "@authzn/core/domain": ["libs/core/domain/src/index.ts"],
       "@authzn/core/util-common": ["libs/core/util-common/src/index.ts"],
+      "@authzn/user/api-interfaces": ["libs/user/api-interfaces/src/index.ts"],
       "@authzn/user/data-access": ["libs/user/data-access/src/index.ts"],
       "@authzn/user/domain": ["libs/user/domain/src/index.ts"],
-      "@authzn/user/feature-auth": ["libs/user/feature-auth/src/index.ts"]
+      "@authzn/user/feature-account": [
+        "libs/user/feature-account/src/index.ts"
+      ],
+      "@authzn/user/feature-auth": ["libs/user/feature-auth/src/index.ts"],
+      "@authzn/user/ui-shared": ["libs/user/ui-shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
