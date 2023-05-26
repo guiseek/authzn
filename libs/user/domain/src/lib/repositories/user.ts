@@ -3,7 +3,7 @@ import {
   UpdateOne,
   FindOneBy,
   FindAll,
-} from '@authzn/core/data-access';
+} from '@authzn/core/domain';
 import { CreateUser, UpdateUser, UserResponse } from '../dtos';
 import { User } from '../entities/user';
 import { Observable } from 'rxjs';

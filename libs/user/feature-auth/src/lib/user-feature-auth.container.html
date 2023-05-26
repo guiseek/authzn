@@ -1,13 +1,25 @@
-<p>user-feature-auth works!</p>
-
-<pre>{{ authFacade.auth$ | async | json }}</pre>
-
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <label for="username"> Nome de usuário </label>
-  <input type="text" id="username" formControlName="username" />
-
-  <label for="password"> Senha de acesso </label>
-  <input type="password" id="password" formControlName="password" />
-
-  <button>Login</button>
-</form>
+<mat-card>
+  <mat-card-header *ngIf="authFacade.message$ | async as message">
+    <mat-card-subtitle>{{message}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-tab-group mat-stretch-tabs dynamicHeight>
+    <mat-tab label="Sign In">
+      <ng-template matTabContent>
+        <form
+          user-sign-in
+          [formGroup]="signInForm"
+          (submit)="onSignIn()"
+        ></form>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Sign Up">
+      <ng-template matTabContent>
+        <form
+          user-sign-up
+          [formGroup]="signUpForm"
+          (submit)="onSignUp()"
+        ></form>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

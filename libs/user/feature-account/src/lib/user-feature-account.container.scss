@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  height: 100%;
+  .sidenav-container {
+    height: 100%;
+  }
+  .sidenav-content {
+    height: 100%;
+
+    .mat-toolbar .mat-mdc-icon-button {
+      margin-right: 12px;
+
+      .mat-icon {
+        transition: transform 500ms ease-in-out;
+      }
+
+      transform: rotate(180deg);
+      &.opened .mat-icon {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  .brand {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidenav {
+    width: 250px;
+
+    .mat-toolbar {
+      background: transparent;
+    }
+
+    .mat-toolbar.mat-primary {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+  }
+}

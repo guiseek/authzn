@@ -1,0 +1,26 @@
+{
+  "name": "user-api-interfaces",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/user/api-interfaces/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/user/api-interfaces",
+        "main": "libs/user/api-interfaces/src/index.ts",
+        "tsConfig": "libs/user/api-interfaces/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/user/api-interfaces/**/*.ts"]
+      }
+    }
+  },
+  "tags": ["type:api", "scope:user"]
+}

@@ -1,9 +1,7 @@
-import { FormControl, FormGroup } from '@angular/forms';
 import { Component } from '@angular/core';
 import { AuthFacade } from '@authzn/user/data-access';
-import { UserCredential } from '@authzn/user/domain';
-
-type TypedForm<T, K extends keyof T = keyof T> = Record<K, FormControl<T[K]>>;
+import { ActivatedRoute, Router } from '@angular/router';
+import { SignInForm, SignUpForm } from './forms';
 
 @Component({
   selector: 'user-user-feature-auth',
@@ -11,21 +9,36 @@ type TypedForm<T, K extends keyof T = keyof T> = Record<K, FormControl<T[K]>>;
   styleUrls: ['./user-feature-auth.container.scss'],
 })
 export class UserFeatureAuthContainer {
-  form = new FormGroup<TypedForm<UserCredential>>({
-    username: new FormControl<string>('kminchelle', {
-      nonNullable: true,
-    }),
-    password: new FormControl<string>('0lelplR', {
-      nonNullable: true,
-    }),
-  });
+  signInForm = new SignInForm();
+  signUpForm = new SignUpForm();
 
-  constructor(readonly authFacade: AuthFacade) {}
+  constructor(
+    readonly authFacade: AuthFacade,
+    route: ActivatedRoute,
+    router: Router
+  ) {
+    this.authFacade.getProfile();
+    this.authFacade.authenticated$.subscribe((state) => {
+      if (state) {
+        const { redirectTo } = route.snapshot.queryParams;
+        router.navigateByUrl(redirectTo ?? '/account');
+      }
+    });
+  }
 
-  onSubmit() {
-    if (this.form.valid) {
-      const { username = '', password = '' } = this.form.value;
-      this.authFacade.signIn({ username, password });
+  onSignUp() {
+    if (this.signUpForm.valid) {
+      this.authFacade.signUp(this.signUpForm.getValue());
+    } else {
+      this.signUpForm.markAllAsTouched();
+    }
+  }
+
+  onSignIn() {
+    if (this.signInForm.valid) {
+      this.authFacade.signIn(this.signInForm.getValue());
+    } else {
+      this.signInForm.markAllAsTouched();
     }
   }
 }

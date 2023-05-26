@@ -1,1 +1,1 @@
-export * from './lib/interfaces/use-case';
+export * from './lib/interfaces';

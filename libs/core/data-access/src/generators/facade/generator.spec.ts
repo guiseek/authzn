@@ -6,7 +6,7 @@ import { FacadeGeneratorSchema } from './schema';
 
 describe('facade generator', () => {
   let tree: Tree;
-  const options: FacadeGeneratorSchema = { name: 'test' };
+  const options: FacadeGeneratorSchema = { name: 'test', project: '' };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();

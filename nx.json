@@ -50,6 +50,5 @@
     "@nx/angular:component": {
       "style": "scss"
     }
-  },
-  "defaultProject": "client"
+  }
 }

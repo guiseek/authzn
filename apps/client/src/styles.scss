@@ -1,1 +1,148 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$client-primary: mat.define-palette(mat.$indigo-palette);
+$client-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$client-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$client-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $client-primary,
+      accent: $client-accent,
+      warn: $client-warn,
+    ),
+    typography: mat.define-typography-config(),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($client-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Sofia Sans', sans-serif;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 8px;
+  gap: 16px;
+}
+
+.col {
+  flex: 1;
+}
+
+.min {
+  &-100 {
+    min-width: 100px;
+  }
+  &-150 {
+    min-width: 150px;
+  }
+  &-200 {
+    min-width: 200px;
+  }
+  &-250 {
+    min-width: 250px;
+  }
+  &-300 {
+    min-width: 300px;
+  }
+  &-350 {
+    min-width: 350px;
+  }
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+.flex {
+  display: flex;
+
+  &.wrap {
+    flex-flow: row wrap;
+  }
+
+  &.row-reverse {
+    flex-direction: row-reverse;
+  }
+  &.space-between {
+    justify-content: space-between;
+  }
+  &.align-center {
+    align-items: center;
+  }
+
+  &.gap-8 {
+    column-gap: 8px;
+  }
+
+  &.gap-16 {
+    column-gap: 16px;
+  }
+
+  &.gap-24 {
+    column-gap: 24px;
+  }
+
+  &.gap-32 {
+    column-gap: 32px;
+  }
+
+  &.col {
+    flex-direction: column;
+
+    &.wrap {
+      flex-flow: column wrap;
+    }
+
+    &.align-center {
+      justify-content: center;
+    }
+    &.space-between {
+      align-content: space-between;
+    }
+
+    &.gap-8 {
+      row-gap: 8px;
+    }
+
+    &.gap-16 {
+      row-gap: 16px;
+    }
+
+    &.gap-24 {
+      row-gap: 24px;
+    }
+
+    &.gap-32 {
+      row-gap: 32px;
+    }
+  }
+}

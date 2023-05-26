@@ -1,3 +1,8 @@
 export interface AuthResponse {
-  accessToken: string;
+  sub: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  iat: number;
+  exp: number;
 }
